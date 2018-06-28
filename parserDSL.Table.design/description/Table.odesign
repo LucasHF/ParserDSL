@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Table" version="12.0.0.2017041100">
+  <ownedViewpoints name="MyViewpoint">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Table Design" initialisation="true" showOnStartup="true" domainClass="parserDSL::Grammar">
+      <metamodel href="../../parserDSL/model/parserDSL.ecore#/"/>
+      <ownedLineMappings name="Terminal" domainClass="parserDSL::Terminal" semanticCandidatesExpression="[symbols/]" headerLabelExpression="Terminal"/>
+      <ownedLineMappings name="Skip" domainClass="parserDSL::Skip" semanticCandidatesExpression="[symbols/]" headerLabelExpression="Skip"/>
+      <ownedCreateLine name="Create Terminal">
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="parserDSL::Terminal" referenceName="new Terminal"/>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedCreateLine name="Create Skip">
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:CreateInstance" typeName="JavaccDsl::Skip" referenceName="New Skip"/>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="Name"/>
+      <ownedColumnMappings name="Description" headerLabelExpression="Description" featureName="Description"/>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="JavaccDSL.Table.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

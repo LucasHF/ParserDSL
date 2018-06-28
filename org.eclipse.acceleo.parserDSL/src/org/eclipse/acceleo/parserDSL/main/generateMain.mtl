@@ -1,0 +1,27 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateMain.
+ */]
+[module generateMain('http://eclipse.com/examples/parserDSL')]
+
+
+[**
+ * The documentation of the template generateMain.
+ * @param aGrammar
+ */]
+[template public generateMain(aGrammar : Grammar)]
+[comment @main/]
+[file ('mainClass.java', false, 'UTF-8')]
+public class mainClass {   
+   public static void main(String ['['/][']'/] args) {
+      try {
+         new Parser(System.in).Goal();
+         System.out.println("Lexical analysis successfull");
+      }
+      catch (ParseException e) {
+         System.out.println("Lexer Error : \n"+ e.toString());
+      }
+   }
+}
+[/file]
+[/template]

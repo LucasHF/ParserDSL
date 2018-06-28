@@ -1,0 +1,60 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateJavacc.
+ */]
+[module generateJavacc('http://eclipse.com/examples/parserDSL')]
+
+
+[**
+ * The documentation of the template generateElement.
+ * @param aGrammar
+ */]
+[template public generateElement(aGrammar : Grammar)]
+[comment @main/]
+[file ('parser.jj', false, 'UTF-8')]
+options
+{
+  static = false;
+  JAVA_UNICODE_ESCAPE = true;
+}
+
+PARSER_BEGIN(Parser)
+public class Parser {
+}
+PARSER_END(Parser)
+//SKIP
+SKIP:
+{
+" "
+	[for (aSkip : Skip | aGrammar.symbols.oclAsType(Skip))]		
+|<[aSkip.Name/] : [aSkip.Description/]>
+	[/for]
+}
+//TOKENS
+TOKEN:
+{
+	[for (aTerminal : Terminal | aGrammar.symbols.oclAsType(Terminal))]
+		[if (aGrammar.symbols.oclAsType(Terminal)->indexOf(aTerminal) = 1 )]
+<[aTerminal.Name/] : [aTerminal.Description/]>
+		[else]
+|<[aTerminal.Name/] : [aTerminal.Description/]>
+		[/if]
+	[/for]
+}
+
+//GRAMMAR
+Goal():
+{}
+{
+(
+	[for (aTerminal : Terminal | aGrammar.symbols.oclAsType(Terminal))]
+		[if (aGrammar.symbols.oclAsType(Terminal)->indexOf(aTerminal) = 1 )]
+<[aTerminal.Name/]>
+		[else]
+|<[aTerminal.Name/] >
+		[/if]
+	[/for]
+)*
+}
+[/file]
+[/template]
