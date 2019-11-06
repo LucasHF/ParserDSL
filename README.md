@@ -17,5 +17,5 @@ Ao executar a DSL cria-se um arquivo .parserdsl e nele é apresentada uma interf
 
 <b>COMPLEMENTOS</b>
 
-Para executar o compilador é necessário dazer download do JavaCC em https://javacc.org
+Para executar o compilador é necessário fazer download do JavaCC em https://javacc.org
 
